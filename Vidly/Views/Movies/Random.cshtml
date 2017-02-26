@@ -1,0 +1,44 @@
+﻿@model Vidly.ViewModels.RandomMovieViewModel
+
+
+
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*This is to add popular class dynamically*@
+@{ 
+    var className = Model.Customer.Count > 0 ? "popular" : null;
+}
+
+<h2 class="@className">@Model.Movie.Name</h2>
+@if (Model.Customer.Count == 0)
+{
+    <text>No customer has rented this movie before!</text>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customer)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
+
+
+
+
+@*@model Vidly.Models.Movie*@
+
+@*@*Used when movie object is passe
+<h2>@Model.Name</h2>*@
+
+@*Used with viewdata, not a good technique. If you change value in viewdata dictionary,it needds to be changed here
+    To fix this Microsoft introduced view bag. Even view bag needs to be type casted and no runtime safety
+    Do not use viewmodel or viewbag!
+<h2>@(((Vidly.Models.Movie)ViewData["Movie"]).Name)</h2>
+
+<h2>@ViewBag.Movie.Name</h2>*@
+
