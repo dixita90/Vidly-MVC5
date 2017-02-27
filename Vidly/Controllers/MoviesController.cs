@@ -11,7 +11,7 @@ namespace Vidly.Controllers
     public class MoviesController : Controller
     {
         // GET: Movies
-        public ActionResult Random()
+        public ActionResult Customers()
         {
             var movie = new Movie() { Name="Shrek" };
             var customers = new List<Customer>
@@ -43,6 +43,13 @@ namespace Vidly.Controllers
 
         }
 
+        public ActionResult displayCustomers()
+        {
+
+            return View();
+        }
+
+
         /*public ActionResult Edit(int id)
         {
             return Content("id =" + id);
@@ -66,11 +73,11 @@ namespace Vidly.Controllers
             return Content(year+"/"+month);
         }*/
 
-        //Attribute routes
+        /*Attribute routes
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
-        }
+        }*/
     }
 }
